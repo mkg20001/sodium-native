@@ -35,6 +35,7 @@ if (process.argv.indexOf('--print-arch') > -1) {
 
 if (process.env.LIBSODIUM) {
   // skip building sodium, as we're using the os one
+  mkdirSync(path.join(__dirname, 'lib'))
   process.exit(0)
 }
 
