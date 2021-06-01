@@ -1,3 +1,8 @@
+if (process.env.LIBSODIUM) {
+  // don't do anything when using system sodium
+  process.exit(0)
+}
+
 var os = require('os')
 var fs = require('fs')
 var path = require('path')
