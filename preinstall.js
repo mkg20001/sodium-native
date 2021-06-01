@@ -16,8 +16,30 @@ if (process.argv.indexOf('--arch') > -1) {
 
 var warch = arch === 'x64' ? 'x64' : 'Win32'
 
+if (process.env.LIBSODIUM) {
+  if (process.argv.indexOf('--print-lib') > -1) {
+    console.log(process.env.LIBSODIUM_LIB)
+    process.exit(0)
+  }
+
+  if (process.argv.indexOf('--print-include') > -1) {
+    console.log(process.env.LIBSODIUM_INCLUDE)
+    process.exit(0)
+  }
+}
+
 if (process.argv.indexOf('--print-arch') > -1) {
   console.log(arch)
+  process.exit(0)
+}
+
+if (process.env.LIBSODIUM) {
+  // skip building sodium, as we're using the os one
+  process.exit(0)
+}
+
+if (process.argv.indexOf('--print-include') > -1) {
+  console.log('libsodium/src/libsodium/include')
   process.exit(0)
 }
 

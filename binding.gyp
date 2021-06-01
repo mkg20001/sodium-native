@@ -6,7 +6,7 @@
     {
       'target_name': 'sodium',
       'include_dirs' : [
-        'libsodium/src/libsodium/include'
+        '<!(node preinstall.js --print-include)'
       ],
       'sources': [
         'binding.c'
